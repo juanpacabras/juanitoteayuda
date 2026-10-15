@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Juanito Te Ayuda · Consultoría IT en Puerto Rico</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;700;800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B1220;--surface:#131C2E;--ink:#E8EEF8;--muted:#9AA8C0;--line:#26334D;--accent:#2EB6F0;--accent-ink:#04111F;--tag:#8B3FF0;--tag-ink:#fff;--soft:#1B2740;color-scheme:dark;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#F2F5FB;--surface:#fff;--ink:#0B1220;--muted:#50607A;--line:#CBD5E6;--accent:#0A7DB8;--accent-ink:#fff;--tag:#7A2DE0;--soft:#E3EAF6;color-scheme:light}}
+:root[data-theme="light"]{--bg:#F2F5FB;--surface:#fff;--ink:#0B1220;--muted:#50607A;--line:#CBD5E6;--accent:#0A7DB8;--accent-ink:#fff;--tag:#7A2DE0;--soft:#E3EAF6;color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.55 Figtree,system-ui,sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque",Figtree,system-ui,sans-serif;line-height:1.05;margin:0}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:18px;padding-bottom:18px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px;font:800 22px "Bricolage Grotesque",sans-serif;text-decoration:none;letter-spacing:-.02em}
+.logo img{width:56px;height:56px;border-radius:14px;box-shadow:0 0 0 2px var(--line)}
+.logo em{font-style:normal;color:var(--accent)}
+.flogo{display:flex;align-items:center;gap:16px}
+.flogo img{width:64px;height:64px;border-radius:14px}
+nav{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+nav a{text-decoration:none;font-weight:500;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+.btn{font:600 16px Figtree,sans-serif;background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:12px 20px;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.alt{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.btn:hover{filter:brightness(1.08)}
+.hero{display:grid;gap:40px;padding:36px 0 72px;align-items:center}
+@media(min-width:900px){.hero{grid-template-columns:1.05fr .95fr}}
+.hero h1{font-size:clamp(40px,6.4vw,76px);font-weight:800;letter-spacing:-.035em}
+.hero p.lead{font-size:20px;color:var(--muted);max-width:30em;margin:20px 0 28px}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+/* ticket tag: the memorable element */
+.tag{position:relative;background:var(--surface);border-radius:18px;padding:28px 24px 24px;box-shadow:0 0 0 2px var(--ink);}
+.tag::before,.tag::after{content:"";position:absolute;top:96px;width:22px;height:22px;border-radius:50%;background:var(--bg);box-shadow:inset 0 0 0 2px var(--ink)}
+.tag::before{left:-12px;clip-path:inset(0 0 0 50%)}
+.tag::after{right:-12px;clip-path:inset(0 50% 0 0)}
+.tag-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-bottom:20px;border-bottom:2px dashed var(--line);margin-bottom:22px}
+.tag-head h2{font-size:26px}
+.tag-head small{display:block;color:var(--muted);font-size:14px;margin-top:4px}
+.stamp{background:var(--tag);color:var(--tag-ink);font:700 14px "Bricolage Grotesque",sans-serif;padding:6px 10px;border-radius:8px;white-space:nowrap}
+label{display:block;font-weight:600;font-size:15px;margin:0 0 14px}
+label span{display:block;margin-bottom:5px}
+input,select,textarea{width:100%;font:400 16px Figtree,sans-serif;color:var(--ink);background:var(--bg);border:2px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:84px;resize:vertical}
+.two{display:grid;gap:12px}
+@media(min-width:520px){.two{grid-template-columns:1fr 1fr}}
+.ok{background:var(--soft);border-radius:12px;padding:16px;margin-top:6px}
+.ok b{font:800 24px "Bricolage Grotesque",sans-serif;display:block}
+.steps{display:flex;gap:8px;margin:14px 0 0;padding:0;list-style:none;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.steps li{padding:4px 10px;border-radius:99px;box-shadow:inset 0 0 0 2px var(--line)}
+.steps li.on{background:var(--accent);color:var(--accent-ink);box-shadow:none;font-weight:600}
+section{padding:64px 0;border-top:2px solid var(--line)}
+section h2{font-size:clamp(30px,4.4vw,48px);letter-spacing:-.025em;margin-bottom:12px}
+section>.wrap>p.sub{color:var(--muted);max-width:36em;margin:0 0 36px}
+.svc{display:grid;gap:4px 40px;padding:20px 0;border-bottom:1px solid var(--line)}
+@media(min-width:760px){.svc{grid-template-columns:.8fr 1.2fr}}
+.svc h3{font-size:24px;letter-spacing:-.015em}
+.svc p{margin:0;color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.chip{font:500 15px Figtree,sans-serif;color:var(--ink);background:transparent;border:0;box-shadow:inset 0 0 0 2px var(--line);border-radius:99px;padding:8px 16px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);box-shadow:none}
+.grid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.item{background:var(--surface);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.pic{height:110px;display:grid;place-items:center;font-size:44px;background:var(--soft)}
+.item div.b{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.item h3{font-size:18px;line-height:1.2}
+.meta{color:var(--muted);font-size:14px}
+.price{font:800 24px "Bricolage Grotesque",sans-serif;margin-top:auto}
+.cond{align-self:flex-start;font-size:13px;font-weight:600;background:var(--soft);padding:2px 9px;border-radius:6px}
+.item .btn{padding:9px 14px;font-size:15px;margin-top:4px}
+.cartbar{margin-top:22px;font-weight:600}
+.book{display:grid;gap:36px}
+@media(min-width:900px){.book{grid-template-columns:1.1fr .9fr}}
+.days,.slots{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.slot{font:500 15px Figtree,sans-serif;color:var(--ink);background:var(--surface);border:0;box-shadow:inset 0 0 0 2px var(--line);border-radius:10px;padding:9px 14px;cursor:pointer}
+.slot[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);box-shadow:none}
+.slot:disabled{opacity:.4;text-decoration:line-through;cursor:not-allowed}
+.panel{background:var(--surface);border-radius:16px;padding:24px}
+.fine{font-size:14px;color:var(--muted)}
+footer{border-top:2px solid var(--line);padding:32px 0 96px;color:var(--muted);font-size:15px}
+/* chat */
+#chatBtn{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:20;box-shadow:0 4px 16px rgba(0,0,0,.25);border-radius:99px}
+#chat{position:fixed;right:16px;bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:20;width:min(360px,calc(100vw - 32px));background:var(--surface);border-radius:16px;box-shadow:0 0 0 2px var(--ink),0 12px 32px rgba(0,0,0,.25);display:none;flex-direction:column;max-height:min(520px,70vh)}
+#chat.open{display:flex}
+#chat header{padding:14px 16px;border-bottom:2px dashed var(--line);font:700 17px "Bricolage Grotesque",sans-serif}
+#log{overflow-y:auto;padding:14px 16px;display:flex;flex-direction:column;gap:10px;flex:1}
+.m{max-width:85%;padding:9px 13px;border-radius:14px;font-size:15px;line-height:1.4}
+.m.bot{background:var(--soft);align-self:flex-start}
+.m.me{background:var(--accent);color:var(--accent-ink);align-self:flex-end}
+.quick{display:flex;gap:6px;flex-wrap:wrap;padding:0 16px 10px}
+.quick .chip{font-size:13px;padding:5px 11px}
+#chatForm{display:flex;gap:8px;padding:12px 16px;border-top:2px solid var(--line)}
+#chatForm input{padding:9px 12px}
+#chatForm .btn{padding:9px 14px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(90px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:99px;font-weight:600;z-index:30;display:none}
+/* trabajos */
+.works{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.work{margin:0;background:var(--surface);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.work .ph{all:unset;cursor:pointer;display:block;aspect-ratio:4/3;background:var(--soft);position:relative}
+.work .ph:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.work img{width:100%;height:100%;object-fit:cover;display:block}
+.work .ph.empty{cursor:default;display:grid;place-items:center;text-align:center;color:var(--muted);font-size:14px;background:repeating-linear-gradient(135deg,var(--soft) 0 14px,transparent 14px 28px);box-shadow:inset 0 0 0 2px var(--line)}
+.work .ph.empty span{display:block;font-size:44px;margin-bottom:4px}
+.work figcaption{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px}
+.work h3{font-size:18px;line-height:1.2}
+.work p{margin:0;color:var(--muted);font-size:15px}
+#lb{border:0;padding:0;background:transparent;max-width:min(960px,94vw)}
+#lb::backdrop{background:rgba(4,10,20,.85)}
+#lb img{max-width:100%;max-height:80vh;border-radius:12px;display:block}
+#lb p{color:#fff;margin:10px 0 0;font-weight:600}
+#lb button{position:absolute;top:8px;right:8px;padding:6px 12px}
+/* historia */
+.story{display:grid;gap:36px}
+@media(min-width:900px){.story{grid-template-columns:1.2fr .8fr}}
+.story p{margin:0 0 16px;max-width:38em}
+.story blockquote{margin:24px 0;padding:18px 22px;border-left:4px solid var(--tag);background:var(--surface);border-radius:0 12px 12px 0;font:700 clamp(22px,3vw,30px)/1.2 "Bricolage Grotesque",sans-serif;letter-spacing:-.015em}
+.time{list-style:none;margin:0;padding:0}
+.time li{position:relative;padding:0 0 22px 28px;border-left:2px dashed var(--line);margin-left:7px}
+.time li:last-child{border-left-color:transparent;padding-bottom:0}
+.time li::before{content:"";position:absolute;left:-9px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--accent)}
+.time b{display:block;font:800 18px "Bricolage Grotesque",sans-serif}
+.time span{color:var(--muted);font-size:15px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="logo" href="#" aria-label="Juanito Te Ayuda, inicio"><img src="data:image/webp;base64,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" alt="Logo de Juanito Te Ayuda: dinosaurio con circuitos" width="56" height="56"><span>Juanito <em>Te Ayuda</em></span></a>
+  <nav aria-label="Principal">
+    <a href="#servicios">Servicios</a><a href="#trabajos">Trabajos</a><a href="#historia">Mi historia</a><a href="#tienda">Tienda</a><a href="#citas">Citas</a>
+    <a href="#tienda" id="cartNav">Reserva (0)</a>
+  </nav>
+</div></header>
+
+<main>
+<div class="wrap hero">
+  <div>
+    <h1>Si falla tu equipo, yo lo resuelvo.</h1>
+    <p class="lead">Diagnóstico, reparación, armado de PCs y venta de laptops y partes en Puerto Rico. Abre un ticket, agenda una cita o pregúntale al asistente.</p>
+    <div class="cta"><a class="btn" href="#citas">Agendar una cita</a><a class="btn alt" href="#tienda">Ver partes en venta</a></div>
+  </div>
+
+  <div class="tag" id="ticket">
+    <div class="tag-head">
+      <div><h2>Abrir ticket de servicio</h2><small>Cuéntame qué pasa y te respondo con un plan.</small></div>
+      <div class="stamp">Gratis</div>
+    </div>
+    <form id="tForm">
+      <div class="two">
+        <label><span>Nombre</span><input name="n" required autocomplete="name"></label>
+        <label><span>Teléfono o correo</span><input name="c" required autocomplete="tel"></label>
+      </div>
+      <label><span>Tipo de equipo</span>
+        <select name="e"><option>Laptop</option><option>PC de escritorio</option><option>Impresora o periférico</option><option>Red o Wi-Fi</option><option>Otro</option></select></label>
+      <label><span>¿Qué está pasando?</span><textarea name="d" required placeholder="Ej.: La laptop no enciende después de un apagón."></textarea></label>
+      <button class="btn" type="submit">Enviar ticket</button>
+    </form>
+    <div class="ok" id="tOk" hidden>
+      <span class="fine">Ticket creado</span><b id="tNum"></b>
+      <p style="margin:6px 0 0" id="tMsg"></p>
+      <ul class="steps"><li class="on">Recibido</li><li>En diagnóstico</li><li>En reparación</li><li>Listo para recoger</li></ul>
+    </div>
+  </div>
+</div>
+
+<section id="servicios"><div class="wrap">
+  <h2>Lo que hago</h2>
+  <p class="sub">Un solo lugar para el diagnóstico, la reparación y el equipo que necesitas.</p>
+  <div class="svc"><h3>Troubleshooting y diagnóstico</h3><p>Equipos lentos, que no encienden, pantallas azules, virus, problemas de red. Encuentro la causa antes de gastar en piezas.</p></div>
+  <div class="svc"><h3>Reparación de laptops y PCs</h3><p>Cambio de pantalla, batería, disco, memoria, puertos y limpieza interna con pasta térmica nueva.</p></div>
+  <div class="svc"><h3>Armado de PCs a tu medida</h3><p>Para trabajo, estudio o juegos. Escogemos las piezas según tu presupuesto, la armo, la pruebo y te la entrego lista.</p></div>
+  <div class="svc"><h3>Venta de laptops y PCs</h3><p>Equipos nuevos y reacondicionados, revisados y con garantía.</p></div>
+  <div class="svc"><h3>Venta de partes</h3><p>Discos, memoria, tarjetas gráficas, fuentes, pantallas y accesorios, sin pasar por las comisiones de un marketplace.</p></div>
+  <div class="svc"><h3>Consultoría IT para negocios pequeños</h3><p>Equipos, respaldos, correo y seguridad básica para que tu negocio no se detenga.</p></div>
+</div></section>
+
+<section id="trabajos"><div class="wrap">
+  <h2>Trabajos realizados</h2>
+  <p class="sub">Algunos de los equipos que he armado y reparado. Toca una foto para verla en grande.</p>
+  <div class="works" id="works"></div>
+</div></section>
+
+<section id="historia"><div class="wrap">
+  <h2>Cómo surgió la idea</h2>
+  <div class="story">
+    <div>
+      <p>Durante cuatro años trabajé part time en un restaurante en Mayagüez mientras estudiaba Ingeniería de Computadoras en el RUM. Siempre he sido una persona servicial: si a un compañero se le dañaba la computadora, o sus hijos necesitaban ayuda con una asignación, ahí estaba yo.</p>
+      <p>Tanto así que, cada vez que alguien tenía un problema, la respuesta era siempre la misma:</p>
+      <blockquote>“Pregúntale a Juanito, él te ayuda.”</blockquote>
+      <p>De ahí salió el nombre. Nunca me había atrevido a cobrar por ayudar, pero mis compañeros de trabajo, familiares y allegados insistían en que abriera mi propio negocio, que de seguro me iría bien. En 2021 decidí renunciar al restaurante y, en febrero de ese año, abrí una página en Facebook. El resto es historia.</p>
+      <p>Juanito Te Ayuda nació de las ganas de ayudar a la gente y, a la vez, de la necesidad de generar un ingreso para costear mis cosas. Empecé dando tutorías y arreglando laptops, y poco a poco fui expandiendo los servicios hasta lo que ves hoy.</p>
+    </div>
+    <ol class="time" aria-label="Línea de tiempo">
+      <li><b>Antes de 2021</b><span>Cuatro años en un restaurante en Mayagüez, estudiando Ingeniería de Computadoras en el RUM y ayudando a todo el que lo necesitara.</span></li>
+      <li><b>Febrero 2021</b><span>Renuncio al part time y abro la página de Facebook de Juanito Te Ayuda.</span></li>
+      <li><b>Los primeros clientes</b><span>Tutorías y reparación de laptops.</span></li>
+      <li><b>Hoy</b><span>Diagnóstico, reparaciones, PCs a la medida, venta de equipos y partes, y consultoría IT para negocios.</span></li>
+    </ol>
+  </div>
+</div></section>
+
+<section id="tienda"><div class="wrap">
+  <h2>Tienda de partes</h2>
+  <p class="sub">Inventario real, precios directos. Reserva y recoge en persona, o coordinamos el envío.</p>
+  <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+  <div class="grid" id="grid"></div>
+  <p class="cartbar" id="cartInfo"></p>
+  <form id="rForm" class="panel" hidden style="margin-top:14px;max-width:520px"><div class="two"><label><span>Nombre</span><input name="n" required></label><label><span>Teléfono o correo</span><input name="c" required></label></div><button class="btn" type="submit">Enviar reserva</button><p class="fine" style="margin:10px 0 0">Normalmente pido un depósito de $35 para apartar piezas; en trabajos grandes, la mitad del total. Lo confirmamos contigo.</p></form>
+  <p class="ok" id="rOk" hidden></p>
+</div></section>
+
+<section id="citas"><div class="wrap">
+  <h2>Agenda tu cita</h2>
+  <p class="sub">Escoge el día y la hora. La cita se añade directo a mi calendario.</p>
+  <div class="book">
+    <div>
+      <label><span>Tipo de cita</span>
+        <select id="aSvc"><option>Diagnóstico de equipo</option><option>Reparación</option><option>Consulta para armar una PC</option><option>Ver o recoger una compra</option><option>Consultoría para mi negocio</option></select></label>
+      <p style="font-weight:600;margin:0 0 8px">Día</p><div class="days" id="days"></div>
+      <p style="font-weight:600;margin:0 0 8px">Hora</p><div class="slots" id="slots"></div>
+    </div>
+    <div class="panel">
+      <form id="aForm">
+        <div class="two">
+          <label><span>Nombre</span><input name="n" required></label>
+          <label><span>Teléfono</span><input name="t" required></label>
+          <label style="grid-column:1/-1"><span>Correo (opcional, para la invitación)</span><input name="m" type="email"></label>
+        </div>
+        <p class="fine" id="aSel">Escoge un día y una hora.</p>
+        <button class="btn" type="submit">Confirmar cita</button>
+      </form>
+      <div class="ok" id="aOk" hidden></div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap flogo"><img class="lg" alt="" width="64" height="64"><div>Juanito Te Ayuda · Consultoría IT · San Juan, Puerto Rico</div></div></footer>
+
+<button class="btn" id="chatBtn" aria-expanded="false" aria-controls="chat">Pregúntale al asistente</button>
+<div id="chat" role="dialog" aria-label="Rex, asistente de Juanito Te Ayuda">
+  <header style="display:flex;align-items:center;gap:10px"><img class="lg" alt="" width="32" height="32" style="border-radius:8px">Rex, tu asistente</header>
+  <div id="log" aria-live="polite"></div>
+  <div class="quick" id="quick"></div>
+  <form id="chatForm"><input id="q" aria-label="Tu pregunta" placeholder="Escribe tu pregunta" autocomplete="off"><button class="btn" type="submit">Enviar</button></form>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<dialog id="lb" aria-label="Foto del trabajo"><img alt=""><p></p><button class="btn" type="button">Cerrar</button></dialog>
+
+<script>
+const $=s=>document.querySelector(s);
+const API='https://script.google.com/macros/s/AKfycbyELWeyR3hj5PXqh_zBysfVcNxspZzXCGddViLbjyCQxKRjheLX4_l6u2aq-iRVINI/exec';
+const live=()=>API.startsWith('https://');
+const get=q=>fetch(API+'?'+q).then(r=>r.json());
+const post=b=>fetch(API,{method:'POST',body:JSON.stringify(b)}).then(r=>r.json());
+const toast=t=>{const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(toast.t);toast.t=setTimeout(()=>e.style.display='none',2200)};
+
+document.querySelectorAll('img.lg').forEach(i=>i.src=document.querySelector('.logo img').src);
+
+/* Tickets */
+$('#tForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const f=new FormData(e.target);
+  let num='JTA-'+String(Math.floor(1000+Math.random()*9000));
+  if(live()){try{const r=await post({type:'ticket',n:f.get('n'),c:f.get('c'),e:f.get('e'),d:f.get('d')});if(!r.ok)throw 0;num=r.num}catch(x){toast('No se pudo enviar. Intenta de nuevo.');return}}
+  $('#tNum').textContent=num;
+  $('#tMsg').textContent='Gracias, '+f.get('n')+'. Reviso tu caso y te contacto pronto al '+f.get('c')+'.';
+  $('#tOk').hidden=false;e.target.reset();
+});
+
+/* Trabajos: sube las fotos a img/trabajos/ con el nombre indicado en f. Si la foto no existe, se muestra un espacio de ejemplo. */
+const W=[
+ {f:'pc-gaming-1.jpg',t:'PC Gaming a la medida con RGB',d:'GeForce RTX 5060, enfriamiento líquido Thermalright con pantalla y ventiladores RGB en un case de cristal.',i:'🎮'},
+ {f:'pc-gaming-2.jpg',t:'PC Gaming blanca y verde',d:'GeForce RTX, enfriamiento líquido Corsair, cables blancos trenzados y pantalla con la temperatura del CPU.',i:'🖥️'},
+ {f:'laptop-pantalla.jpg',t:'Cambio de pantalla de MacBook Pro',d:'Pantalla dañada reemplazada y MacBook Pro funcionando como nueva.',i:'💻'},
+ {f:'pc-pasta-termica.jpg',t:'Mantenimiento y pasta térmica',d:'Pasta térmica nueva en un AMD Ryzen 7 para bajar temperaturas y alargar la vida del equipo.',i:'🧰'},
+ {f:'apple-watch.jpg',t:'Cambio de pantalla de Apple Watch',d:'Pantalla nueva instalada y el reloj encendiendo y cargando sin problemas.',i:'⌚'},
+ {f:'laptop-disco.jpg',t:'Cambio de disco en laptop Dell',d:'Laptop abierta para cambiar el disco duro y dejarla más rápida.',i:'💾'}
+];
+W.forEach(w=>{
+  const fig=document.createElement('figure');fig.className='work';
+  fig.innerHTML=`<button class="ph" type="button" aria-label="Ver foto: ${w.t}"><img src="img/trabajos/${w.f}" alt="${w.t}" loading="lazy"></button><figcaption><h3>${w.t}</h3><p>${w.d}</p></figcaption>`;
+  const ph=fig.querySelector('.ph');
+  ph.querySelector('img').onerror=()=>{ph.outerHTML=`<div class="ph empty"><div><span aria-hidden="true">${w.i}</span>Foto próximamente</div></div>`};
+  ph.onclick=()=>{const lb=$('#lb');lb.querySelector('img').src='img/trabajos/'+w.f;lb.querySelector('img').alt=w.t;lb.querySelector('p').textContent=w.t;lb.showModal()};
+  $('#works').append(fig);
+});
+$('#lb button').onclick=()=>$('#lb').close();
+$('#lb').onclick=e=>{if(e.target.id==='lb')$('#lb').close()};
+
+/* Tienda */
+let P=[
+ {n:'SSD NVMe 1 TB',c:'Componentes',p:64,s:6,k:'Nuevo',i:'💾'},
+ {n:'Memoria DDR4 16 GB (2×8)',c:'Componentes',p:42,s:4,k:'Nuevo',i:'🧠'},
+ {n:'Tarjeta gráfica RTX 3060',c:'Componentes',p:189,s:1,k:'Usado',i:'🎮'},
+ {n:'Fuente 650 W certificada',c:'Componentes',p:58,s:3,k:'Nuevo',i:'🔌'},
+ {n:'ThinkPad T480 i5 16 GB',c:'Laptops',p:249,s:2,k:'Reacondicionado',i:'💻'},
+ {n:'Pantalla laptop 15.6" FHD',c:'Repuestos',p:79,s:5,k:'Nuevo',i:'🖥️'},
+ {n:'Batería para laptop (varios modelos)',c:'Repuestos',p:45,s:8,k:'Nuevo',i:'🔋'},
+ {n:'Cargador universal 65 W',c:'Accesorios',p:29,s:10,k:'Nuevo',i:'⚡'}
+];
+let cat='Todo',cart=[];
+const cats=['Todo',...new Set(P.map(x=>x.c))];
+function chips(){$('#chips').innerHTML='';cats.forEach(c=>{const b=document.createElement('button');b.className='chip';b.textContent=c;b.setAttribute('aria-pressed',c===cat);b.onclick=()=>{cat=c;chips();grid()};$('#chips').append(b)})}
+function grid(){
+  $('#grid').innerHTML='';
+  P.filter(x=>cat==='Todo'||x.c===cat).forEach(x=>{
+    const d=document.createElement('article');d.className='item';
+    d.innerHTML=`<div class="pic" aria-hidden="true">${x.i}</div><div class="b"><span class="cond">${x.k}</span><h3>${x.n}</h3><span class="meta">${x.s} disponible${x.s>1?'s':''}</span><span class="price">$${x.p}</span></div>`;
+    const b=document.createElement('button');b.className='btn';b.textContent='Reservar';
+    b.onclick=()=>{cart.push(x);cartUI();toast(x.n+' reservado')};
+    d.querySelector('.b').append(b);$('#grid').append(d);
+  });
+}
+function cartUI(){
+  $('#cartNav').textContent='Reserva ('+cart.length+')';$('#rForm').hidden=!cart.length;
+  const t=cart.reduce((a,x)=>a+x.p,0);
+  $('#cartInfo').textContent=cart.length?cart.length+' producto'+(cart.length>1?'s':'')+' reservado'+(cart.length>1?'s':'')+' · Total $'+t+'. Para recoger en persona o coordinar envío.':'';
+}
+chips();grid();
+if(live())get('action=products').then(r=>{if(r.length){P=r;cat='Todo';cats.length=0;cats.push('Todo',...new Set(P.map(x=>x.c)));chips();grid()}}).catch(()=>{});
+$('#rForm').addEventListener('submit',async e=>{
+  e.preventDefault();const f=new FormData(e.target);
+  const total=cart.reduce((a,x)=>a+x.p,0);let ref='RES-'+Math.floor(1000+Math.random()*9000);
+  if(live()){try{const r=await post({type:'reserva',n:f.get('n'),c:f.get('c'),items:cart.map(x=>x.n)});if(!r.ok)throw 0;ref=r.ref}catch(x){toast('No se pudo enviar. Intenta de nuevo.');return}}
+  $('#rOk').textContent='Reserva '+ref+' recibida, '+f.get('n')+'. Total $'+total+'. Te escribo para confirmar el depósito y la entrega.';
+  $('#rOk').hidden=false;cart=[];cartUI();e.target.reset();
+});
+
+/* Citas */
+const H={6:[10,16]};[1,2,3,4,5].forEach(k=>H[k]=[18,20]);
+const lbl=t=>{const [h,m]=t.split(':').map(Number);return (h%12||12)+':'+String(m).padStart(2,'0')+(h<12?' AM':' PM')};
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+let day=null,hr=null,cur=[];
+async function daySlots(d){
+  if(live())return get('action=slots&date='+iso(d));
+  const h=H[d.getDay()],r=[];
+  for(let m=h[0]*60;m+30<=h[1]*60;m+=30)r.push({t:String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0'),free:(m/30+d.getDate())%4!==0});
+  return r;
+}
+const D=[];for(let i=1;D.length<6;i++){const d=new Date();d.setDate(d.getDate()+i);if(d.getDay()!==0)D.push(d)}
+function days(){
+  $('#days').innerHTML='';
+  D.forEach((d,i)=>{const b=document.createElement('button');b.type='button';b.className='slot';
+    b.textContent=d.toLocaleDateString('es-PR',{weekday:'short',day:'numeric',month:'short'});
+    b.setAttribute('aria-pressed',day===i);b.onclick=()=>{day=i;hr=null;days();slots(true);sel()};$('#days').append(b)});
+}
+async function slots(reload){
+  $('#slots').innerHTML='';
+  if(day===null){$('#slots').innerHTML='<span class="fine">Escoge un día primero.</span>';return}
+  if(reload){$('#slots').innerHTML='<span class="fine">Cargando horas…</span>';try{cur=await daySlots(D[day])}catch(x){cur=[]}$('#slots').innerHTML=''}
+  if(!cur.length)$('#slots').innerHTML='<span class="fine">No hay horas disponibles ese día.</span>';
+  cur.forEach(s=>{const b=document.createElement('button');b.type='button';b.className='slot';b.textContent=lbl(s.t);
+    b.disabled=!s.free;b.setAttribute('aria-pressed',hr===s.t);b.onclick=()=>{hr=s.t;slots();sel()};$('#slots').append(b)});
+}
+function sel(){$('#aSel').textContent=(day!==null&&hr!==null)?$('#aSvc').value+' · '+D[day].toLocaleDateString('es-PR',{weekday:'long',day:'numeric',month:'long'})+', '+lbl(hr):'Escoge un día y una hora.'}
+$('#aSvc').onchange=sel;
+$('#aForm').addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(day===null||hr===null){toast('Escoge un día y una hora');return}
+  const f=new FormData(e.target),n=f.get('n');
+  if(live()){try{const r=await post({type:'cita',n:n,t:f.get('t'),m:f.get('m'),s:$('#aSvc').value,date:iso(D[day]),time:hr});if(!r.ok){toast(r.error||'Esa hora ya no está disponible');slots(true);return}}catch(x){toast('No se pudo agendar. Intenta de nuevo.');return}}
+  $('#aOk').innerHTML='<b style="font:800 22px \'Bricolage Grotesque\',sans-serif">Cita confirmada</b><p style="margin:6px 0 0">'+$('#aSel').textContent.replace(/</g,'')+'. Te esperamos, '+n.replace(/</g,'')+'.</p>';
+  $('#aOk').hidden=false;
+});
+days();slots();
+
+/* Chatbot (respuestas de ejemplo) */
+const R=[
+ [/cita|agendar|reservar hora/,'Puedes agendar en la sección Citas: escoges día y hora y queda en mi calendario.'],
+ [/ticket|reporte|falla|no enciende|problema/,'Abre un ticket arriba, en esta misma página, y cuéntame qué pasa. Así puedo prepararme antes de verte.'],
+ [/precio|cuesta|cobra|costo/,'El diagnóstico se confirma al agendar. Las partes tienen su precio en la tienda.'],
+ [/hora|horario|abierto/,'Atiendo con cita, de lunes a sábado. Escoge un espacio disponible en Citas.'],
+ [/garant/,'Los equipos y las partes que vendo incluyen garantía. Te explico los detalles al comprar.'],
+ [/pc|armar|build|gamer|juego/,'Armo PCs a tu medida. Agenda una "Consulta para armar una PC" y vemos presupuesto y piezas.'],
+ [/parte|stock|ssd|ram|laptop|compr|venta|tienda/,'Mira la Tienda de partes: puedes reservar y recoger en persona, o coordinamos envío.'],
+ [/donde|ubic|direcc|san juan/,'Estoy en San Juan, Puerto Rico. Te doy los detalles exactos al confirmar tu cita.']
+];
+const log=$('#log');
+function say(t,w){const m=document.createElement('div');m.className='m '+w;m.textContent=t;log.append(m);log.scrollTop=log.scrollHeight}
+function ask(t){say(t,'me');const r=R.find(x=>x[0].test(t.toLowerCase()));setTimeout(()=>say(r?r[1]:'No estoy seguro de eso. Abre un ticket y Juanito te responde personalmente.','bot'),350)}
+say('Hola, soy Rex, el asistente de Juanito Te Ayuda. ¿En qué te puedo ayudar?','bot');
+['Quiero agendar una cita','Mi equipo no enciende','¿Venden partes?','¿Dan garantía?'].forEach(t=>{const b=document.createElement('button');b.className='chip';b.textContent=t;b.onclick=()=>ask(t);$('#quick').append(b)});
+$('#chatBtn').onclick=()=>{const o=$('#chat').classList.toggle('open');$('#chatBtn').setAttribute('aria-expanded',o)};
+$('#chatForm').addEventListener('submit',e=>{e.preventDefault();const v=$('#q').value.trim();if(v){ask(v);$('#q').value=''}});
+</script>
+</body>
+</html>
