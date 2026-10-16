@@ -328,7 +328,11 @@ function cartUI(){
   $('#cartInfo').textContent=cart.length?cart.length+' producto'+(cart.length>1?'s':'')+' reservado'+(cart.length>1?'s':'')+' · Total $'+t+'. Para recoger en persona o coordinar envío.':'';
 }
 chips();grid();
-if(live())get('action=products').then(r=>{if(r.length){P=r;cat='Todo';cats.length=0;cats.push('Todo',...new Set(P.map(x=>x.c)));chips();grid()}}).catch(()=>{});
+if(live()){
+  P=[];cats.length=0;cats.push('Todo');cat='Todo';chips();$('#grid').innerHTML='<p class="fine">Cargando inventario…</p>';
+  get('action=products').then(r=>{P=Array.isArray(r)?r:[];cats.length=0;cats.push('Todo',...new Set(P.map(x=>x.c)));cat='Todo';chips();grid();if(!P.length)$('#grid').innerHTML='<p class="fine">Por ahora no hay productos disponibles. Vuelve pronto.</p>'})
+   .catch(()=>{$('#grid').innerHTML='<p class="fine">No se pudo cargar el inventario. Recarga la página.</p>'});
+}
 $('#rForm').addEventListener('submit',async e=>{
   e.preventDefault();const f=new FormData(e.target);
   const total=cart.reduce((a,x)=>a+x.p,0);let ref='RES-'+Math.floor(1000+Math.random()*9000);
