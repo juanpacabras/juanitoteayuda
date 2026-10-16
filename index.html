@@ -299,16 +299,7 @@ $('#lb button').onclick=()=>$('#lb').close();
 $('#lb').onclick=e=>{if(e.target.id==='lb')$('#lb').close()};
 
 /* Tienda */
-let P=[
- {n:'SSD NVMe 1 TB',c:'Componentes',p:64,s:6,k:'Nuevo',i:'💾'},
- {n:'Memoria DDR4 16 GB (2×8)',c:'Componentes',p:42,s:4,k:'Nuevo',i:'🧠'},
- {n:'Tarjeta gráfica RTX 3060',c:'Componentes',p:189,s:1,k:'Usado',i:'🎮'},
- {n:'Fuente 650 W certificada',c:'Componentes',p:58,s:3,k:'Nuevo',i:'🔌'},
- {n:'ThinkPad T480 i5 16 GB',c:'Laptops',p:249,s:2,k:'Reacondicionado',i:'💻'},
- {n:'Pantalla laptop 15.6" FHD',c:'Repuestos',p:79,s:5,k:'Nuevo',i:'🖥️'},
- {n:'Batería para laptop (varios modelos)',c:'Repuestos',p:45,s:8,k:'Nuevo',i:'🔋'},
- {n:'Cargador universal 65 W',c:'Accesorios',p:29,s:10,k:'Nuevo',i:'⚡'}
-];
+let P=[];
 let cat='Todo',cart=[];
 const cats=['Todo',...new Set(P.map(x=>x.c))];
 function chips(){$('#chips').innerHTML='';cats.forEach(c=>{const b=document.createElement('button');b.className='chip';b.textContent=c;b.setAttribute('aria-pressed',c===cat);b.onclick=()=>{cat=c;chips();grid()};$('#chips').append(b)})}
